@@ -62,7 +62,7 @@ function extractHost(rawDesc: string): string {
   const m = plain.match(/booked\s*by[\s:]*(.+?)(?:\r?\n|\n)/i);
   if (m) return m[1].trim();
   const m2 = plain.match(
-    /booked\s*by[\s:]*(.+?)\s+(?:open space title|open space description|room)/i
+    /booked\s*by[\s:]*(.+?)\s+(?:open space title|open space description|room)/i,
   );
   if (m2) return m2[1].trim();
   return "";
@@ -72,7 +72,7 @@ function shortenEuroPythonLinks(text: string): string {
   // Replace https://ep*.europython.eu/path with [/path](/path), but only if path has content
   return text.replace(
     /https?:\/\/ep[^.]*\.europython\.eu(\/[^\s<!]+)/g,
-    "[$1]($1)"
+    "[$1]($1)",
   );
 }
 
@@ -88,7 +88,7 @@ function slugify(text: string): string {
 }
 
 function parseDt(
-  raw: string
+  raw: string,
 ): null | { iso: string; hhmm: string; date: string } {
   const tzMatch = raw.match(/TZID=.*?[ :](\d{8}T\d{6})/);
   if (tzMatch) {
@@ -171,7 +171,7 @@ function parseICal(ics: string): OpenSpaceEvent[] {
     // Build full description from "Open Space Description" section
     let fullDescription = "";
     const descMatch = rawDescription.match(
-      /open space description\s*:?\s*([\s\S]+?)(?:room\s+\S+|$)/i
+      /open space description\s*:?\s*([\s\S]+?)(?:room\s+\S+|$)/i,
     );
     if (descMatch) {
       fullDescription = descMatch[1]
@@ -239,7 +239,7 @@ export async function fetchOpenSpacesEvents(): Promise<OpenSpaceEvent[]> {
     }
     const events = parseICal(text);
     console.log(
-      `[OpenSpacesCalendar] Loaded ${events.length} events from iCal`
+      `[OpenSpacesCalendar] Loaded ${events.length} events from iCal`,
     );
     return events;
   } catch (err) {

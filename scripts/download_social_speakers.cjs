@@ -22,7 +22,7 @@ const puppeteer = require("puppeteer");
             new Promise((resolve) => {
               img.onload = resolve;
               img.onerror = resolve;
-            })
+            }),
         ),
       // SVG <image> elements loaded via href
       ...Array.from(document.querySelectorAll("svg image[href]")).map(
@@ -34,9 +34,9 @@ const puppeteer = require("puppeteer");
             img.onload = resolve;
             img.onerror = resolve;
             img.src = url;
-          })
+          }),
       ),
-    ])
+    ]),
   );
 
   // Hide the Astro dev toolbar and any other overlays before screenshotting
