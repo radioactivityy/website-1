@@ -670,8 +670,13 @@ const showNoticeGrid = !Astro.url.pathname.match(/^\/schedule\/?$/);
     }
 
     .lunch-break-content .sched-posters-list a {
+      display: inline-block !important;
+      border: 1px solid #ccc !important;
+      border-radius: 3px !important;
+      padding: 2pt 6pt !important;
       color: oklch(0.522 0.218 264.4) !important;
       text-decoration: none !important;
+      font-size: 6.5pt !important;
     }
   }
 </style>
