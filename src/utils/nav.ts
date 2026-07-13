@@ -34,7 +34,7 @@ export async function buildLinkChecker(): Promise<(url: string) => boolean> {
   const redirectMatch = configText.match(/redirects:\s*{([^}]+)}/s);
   const redirectPathsFromConfig: string[] = redirectMatch
     ? [...redirectMatch[1].matchAll(/"([^"]+)"\s*:/g)].map((m) =>
-        m[1].replace(/^\//, "").replace(/\/$/, ""),
+        m[1].replace(/^\//, "").replace(/\/$/, "")
       )
     : [];
 

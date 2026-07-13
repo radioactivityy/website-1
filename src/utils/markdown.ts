@@ -2,7 +2,7 @@ import { experimental_AstroContainer } from "astro/container";
 import YouTube from "@ui/YouTube.astro";
 
 export async function replaceYouTubeLinks(
-  markdownContent: string,
+  markdownContent: string
 ): Promise<string> {
   const youtubeRegex =
     /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^\s'"()[\]<>]+)/gi;

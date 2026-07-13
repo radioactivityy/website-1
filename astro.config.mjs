@@ -30,11 +30,11 @@ if (!gitVersion) {
 
 const mode =
   process.argv.find((arg) =>
-    ["development", "production", "preview"].includes(arg),
+    ["development", "production", "preview"].includes(arg)
   ) || "production";
 const fastBuild = loadEnv(mode, process.cwd(), "").EP_FAST_BUILD === "true";
 console.log(
-  `\x1b[35m[EP]\x1b[0m Fast Build: \x1b[1m\x1b[34m${fastBuild}\x1b[0m`,
+  `\x1b[35m[EP]\x1b[0m Fast Build: \x1b[1m\x1b[34m${fastBuild}\x1b[0m`
 );
 
 import fs from "fs";
@@ -88,7 +88,7 @@ function dontDie() {
           ) {
             console.warn(
               "[dont-die] Caught remote image error:",
-              error.message,
+              error.message
             );
             return;
           }
@@ -106,7 +106,7 @@ export default defineConfig({
         new Date()
           .toISOString()
           .replace(/[-:T.Z]/g, "")
-          .slice(0, 14),
+          .slice(0, 14)
       ),
       __GIT_VERSION__: JSON.stringify(gitVersion),
     },

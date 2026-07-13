@@ -46,7 +46,7 @@ export const GET: APIRoute = async () => {
   const keynoteSpeakerIds = new Set(
     sessions
       .filter((s) => s.data.session_type?.toLowerCase() === "keynote")
-      .flatMap((s) => s.data.speakers.map((ref) => ref.id)),
+      .flatMap((s) => s.data.speakers.map((ref) => ref.id))
   );
 
   const records: any[] = [];
@@ -100,11 +100,11 @@ export const GET: APIRoute = async () => {
     } = speaker.data;
 
     const sessions = await Promise.all(
-      submissions.map((session) => getEntry("sessions", session.id)),
+      submissions.map((session) => getEntry("sessions", session.id))
     );
 
     const validSessions = sessions.filter(
-      (session) => session && session.data.title,
+      (session) => session && session.data.title
     );
 
     if (validSessions.length === 0) continue;

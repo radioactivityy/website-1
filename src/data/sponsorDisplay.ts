@@ -1,6 +1,6 @@
 const logoImports = import.meta.glob<true, string, { default: ImageMetadata }>(
   "../content/sponsors/*/display.png",
-  { eager: true },
+  { eager: true }
 );
 
 export const sponsorDisplay: Record<string, ImageMetadata> = {};

@@ -7,7 +7,7 @@ const inFlightCache: Record<string, Promise<DataResponse>> = {};
 export async function loadData(
   apiUrl: string,
   maxRetries = 3,
-  retryDelay = 1000,
+  retryDelay = 1000
 ): Promise<DataResponse> {
   if (!apiUrl) {
     throw new Error(`No API URL provided`);
@@ -34,7 +34,7 @@ export async function loadData(
 
         if (!response.ok) {
           throw new Error(
-            `Fetch failed: ${response.status} ${response.statusText}`,
+            `Fetch failed: ${response.status} ${response.statusText}`
           );
         }
 
@@ -53,7 +53,7 @@ export async function loadData(
           console.log(`📦 Received JSON array with ${data.length} items`);
         } else if (typeof data === "object") {
           console.log(
-            `📦 Received JSON object with ${Object.keys(data).length} keys`,
+            `📦 Received JSON object with ${Object.keys(data).length} keys`
           );
         }
 
@@ -69,7 +69,7 @@ export async function loadData(
         } else {
           throw new Error(
             `Failed to load data from ${apiUrl} after ${maxRetries} attempts: ${lastError.message}`,
-            { cause: lastError },
+            { cause: lastError }
           );
         }
       }

@@ -31,7 +31,7 @@ function getLinkedInUrl(url: string): string | undefined {
   if (!url) return undefined;
   // Normalise linkedin.com URLs (handles both /in/ and /company/ paths)
   const match = url.match(
-    /https?:\/\/(?:www\.)?linkedin\.com\/(in|company|showcase)\/([^\/\?]+)/,
+    /https?:\/\/(?:www\.)?linkedin\.com\/(in|company|showcase)\/([^\/\?]+)/
   );
   if (match) {
     try {
@@ -124,7 +124,7 @@ function buildSponsorMessage(
   template: string,
   name: string,
   handle: string,
-  url: string,
+  url: string
 ): string {
   // If no handle, remove the placeholder (and any leading space before it)
   const withHandle = handle
@@ -154,7 +154,7 @@ export const GET: APIRoute = async () => {
   const keynoteSpeakerIds = new Set(
     allSessions
       .filter((s) => s.data.session_type?.toLowerCase() === "keynote")
-      .flatMap((s) => s.data.speakers.map((ref) => ref.id)),
+      .flatMap((s) => s.data.speakers.map((ref) => ref.id))
   );
 
   // ── build speaker records ────────────────────────────────────────────────
@@ -173,12 +173,12 @@ export const GET: APIRoute = async () => {
     } = speaker.data;
 
     const sessions = await Promise.all(
-      submissions.map((s) => getEntry("sessions", s.id)),
+      submissions.map((s) => getEntry("sessions", s.id))
     );
 
     // One card per qualifying session (Talk, Tutorial, or other); skip sessions without a title
     const qualifyingSessions = sessions.filter(
-      (s) => s && s.data.title && s.data.session_type,
+      (s) => s && s.data.title && s.data.session_type
     );
     if (qualifyingSessions.length === 0) continue;
 
@@ -205,7 +205,7 @@ export const GET: APIRoute = async () => {
           : image;
 
       const generateSpeakerMessage = (
-        platform: keyof typeof speakerMessageTemplate,
+        platform: keyof typeof speakerMessageTemplate
       ) => {
         const fn = speakerMessageTemplate[platform];
         const handle =

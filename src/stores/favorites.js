@@ -6,5 +6,5 @@ export const favorites = persistentMap(
   {
     encode: JSON.stringify,
     decode: JSON.parse,
-  },
+  }
 );
